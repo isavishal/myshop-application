@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+                max-width: 300px;
+                margin: 40px;
+                text-align: center;
+                font-family: arial;
+              }
+              
+              .price {
+                color: grey;
+                font-size: 18px;
+              }
+        </style>
+        <meta charset="utf-8" />
+        <title>{% block title %}My shop{% endblock %}</title>
+        <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <div class="w3-left w3-padding-14">
+                <a href="/" class="logo" style="text-decoration: none;">
+                    <div class="w3-container">
+                        <h2><b>My Shop</b></h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+            <div id="subheader" class="w3-padding-64 ">
+                <div class="cart">
+                    <div class="w3-container w3-grey">
+                    {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+                    <h3 align="right">
+                    Your cart:
+                    <a href="{% url "cart:cart_detail" %}">
+                        {{ total_items }} item{{ total_items|pluralize }},
+                        ${{ cart.get_total_price }}
+                    </a>
+                    </h3>
+                    {% else %}
+                    <h3 align="right">
+                    Your cart is empty.
+                    </h3>
+                    {% endif %}
+                    {% endwith %}
+                    </div>
+                </div>
+        </div>
+        <div class="w3-main w3-content" style="max-width:1300px;margin-top:9px">
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
