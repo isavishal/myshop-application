@@ -28,11 +28,11 @@
     </p>
     <form action="{% url "cart:cart_add" product.id %}" method="post">
         {% csrf_token %}
-    {{ cart_product_form }}
-    <button class="w3-button w3-blue" input type="submit">
-        ADD TO CART
-    </button>
-</form>
+        {{ cart_product_form }}
+        <button class="w3-button w3-blue" input type="submit">
+            ADD TO CART
+        </button>
+    </form>
 <h3>
     <u>
     Description
